@@ -362,6 +362,7 @@ func TestWithHTTPClient(t *testing.T) {
 	if client == nil {
 		t.Fatal("client is nil")
 	}
+
 }
 
 // --- keyID validation ---
@@ -369,10 +370,10 @@ func TestWithHTTPClient(t *testing.T) {
 func TestNew_InvalidKeyID(t *testing.T) {
 	cases := []string{
 		"",
-		"sk_abc",              // wrong prefix
-		"ak_test",             // non-hex suffix
-		"ak_\r\nEvil: 1",     // header injection attempt
-		"ak_UPPERCASE",        // uppercase not allowed
+		"sk_abc",         // wrong prefix
+		"ak_\r\nEvil: 1", // header injection attempt
+		"ak_ space",      // space not allowed
+		"ak_has/slash",   // slash not allowed
 	}
 	for _, id := range cases {
 		func() {

@@ -39,7 +39,7 @@ const (
 	Version = "1.0.0"
 )
 
-var reKeyID = regexp.MustCompile(`^ak_[0-9a-f]+$`)
+var reKeyID = regexp.MustCompile(`^ak_[0-9a-zA-Z_]+$`)
 
 // Client is the EasyID API client. Create one with New() and reuse it across goroutines.
 type Client struct {
